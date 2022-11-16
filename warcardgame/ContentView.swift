@@ -9,13 +9,63 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        ZStack {
+            Image("background").ignoresSafeArea()
+            
+            VStack {
+                Spacer()
+                Image("logo")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .padding([.leading, .trailing], 100.0)
+                    .padding(.top, 50.0)
+                    
+                Spacer()
+                HStack {
+                    Image("card3")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                    
+                    Spacer()
+                    Spacer()
+                    Spacer()
+                    Image("card4")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                }
+                .padding(.horizontal, 55.0)
+                Spacer()
+                Image("dealbutton")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .padding(.horizontal, 130.0)
+//                    .padding(.vertical, 50.0)
+//                    .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
+                Spacer()
+                HStack {
+                    Spacer()
+                    VStack {
+                        Text("Player")
+                            .font(.headline)
+                            .padding(.bottom, 1.0)
+                        Text("0")
+                            .font(.largeTitle)
+                    }.foregroundColor(Color.white)
+                    Spacer()
+                    VStack {
+                        Text("CPU")
+                            .font(.headline)
+                            .padding(.bottom, 1.0)
+                        Text("0")
+                            .font(.largeTitle)
+                    }.foregroundColor(Color.white)
+                    Spacer()
+                }
+//                .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
+                Spacer()
+            }
         }
-        .padding()
+        
     }
 }
 
