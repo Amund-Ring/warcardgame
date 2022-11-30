@@ -35,13 +35,20 @@ struct ContentView: View {
                 }
                 .padding(.horizontal, 55.0)
                 Spacer()
-                Image("dealbutton")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .padding(.horizontal, 130.0)
-//                    .padding(.vertical, 50.0)
-//                    .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
+                
+                Button(action: {
+                    print("I was clicked")
+                }, label: {
+                    
+                    Image("dealbutton")
+                        .resizable()
+                        .scaledToFit()
+                        .padding(.horizontal, 130.0)
+                })
+                
                 Spacer()
+                
+                
                 HStack {
                     Spacer()
                     VStack {
