@@ -1,16 +1,25 @@
 //
 //  ContentView.swift
-//  warcardgame
+//  war-challenge
 //
-//  Created by Amund Ring on 16/11/2022.
+//  Created by Christopher Ching on 2020-10-28.
 //
 
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var playerCard = "card5"
+    @State private var cpuCard = "card9"
+    @State private var playerScore = 0
+    @State private var cpuScore = 0
+    
+    
     var body: some View {
         ZStack {
-            Image("background").ignoresSafeArea()
+            Image("background")
+                .resizable()
+                .ignoresSafeArea()
             
             VStack {
                 Spacer()
@@ -22,14 +31,14 @@ struct ContentView: View {
                     
                 Spacer()
                 HStack {
-                    Image("card3")
+                    Image(playerCard)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                     
                     Spacer()
                     Spacer()
                     Spacer()
-                    Image("card4")
+                    Image(cpuCard)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                 }
@@ -37,7 +46,18 @@ struct ContentView: View {
                 Spacer()
                 
                 Button(action: {
-                    print("I was clicked")
+                    let playerRand = Int.random(in: 2...14)
+                    let cpuRand = Int.random(in: 2...14)
+                    
+                    playerCard = "card" + String(playerRand)
+                    cpuCard = "card" + String(cpuRand)
+                    
+                    if playerRand > cpuRand {
+                        playerScore += 1
+                    } else if playerRand < cpuRand {
+                        cpuScore += 1
+                    }
+                    
                 }, label: {
                     
                     Image("dealbutton")
@@ -55,7 +75,7 @@ struct ContentView: View {
                         Text("Player")
                             .font(.headline)
                             .padding(.bottom, 1.0)
-                        Text("0")
+                        Text(String(playerScore))
                             .font(.largeTitle)
                     }.foregroundColor(Color.white)
                     Spacer()
@@ -63,7 +83,7 @@ struct ContentView: View {
                         Text("CPU")
                             .font(.headline)
                             .padding(.bottom, 1.0)
-                        Text("0")
+                        Text(String(cpuScore))
                             .font(.largeTitle)
                     }.foregroundColor(Color.white)
                     Spacer()
